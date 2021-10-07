@@ -1,0 +1,124 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "airbnb",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["prettier", "react-hooks"],
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "eslint-import-resolver-typescript": true
+    },
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "rules": {
+    // note you must disable the base rule as it can report incorrect errors
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
+    "react/prop-types": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "no-underscore-dangle": 0,
+    "import/first": 0,
+    "import/no-cycle": 2,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": [0, "never", { "ts": "never" }],
+    // Reports as error files marked as invalid by prettier
+    "prettier/prettier": ["error"],
+    // Accept react router Link component attribute 'to' as href
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
+    // Bad for readability, use destructuring when useful
+    "prefer-destructuring": 0,
+    // conflicts with curly-spacing rule
+    "object-curly-newline": 0,
+    // Default props not always nescessary.
+    "react/default-props-match-prop-types": 0,
+    // Default props not always nescessary.
+    "react/require-default-props": 0,
+    // We have comment blocks describing arguments and we need to keep it.
+    "function-paren-newline": 0,
+    // We use the 'import' plugin which allows for cases "flow" awareness.
+    "no-duplicate-imports": 0,
+    // A .jsx extension is not required for files containing jsx.
+    "react/jsx-filename-extension": 0,
+    "react/jsx-no-bind": 2,
+    "react/sort-comp": 0,
+    // We use global requires in various places, e.g. code splitting instances.
+    "global-require": 0,
+    // Allow non-default exports.
+    "import/prefer-default-export": 0,
+    // Allow multispace only for alignment of imports, variables declaration and properties.
+    "no-multi-spaces": [
+      "error",
+      {
+        "exceptions": {
+          "VariableDeclarator": true,
+          "ImportDeclaration": true,
+          "Property": true
+        }
+      }
+    ],
+    // Allow larger lines to 120 chars.
+    "max-len": [
+      "error",
+      140,
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    // Enforces one or more spaces before or after colons in object literals.
+    "key-spacing": ["error", { "mode": "minimum" }]
+  },
+  "globals": {
+    // CanalPlus OnePlayer global.
+    "OnePlayer": false,
+    // Social Embed globals.
+    "FB": false,
+    "twttr": false,
+    // Globals injected by Jest in test files.
+    "it": false,
+    "it.only": false,
+    "describe": false,
+    "describe.only": false,
+    "afterEach": false,
+    "beforeEach": false,
+    "expect": false,
+    "jest": false
+  }
+}
