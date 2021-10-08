@@ -36,7 +36,6 @@ export const UserProfessionalForm = () => {
         id="date"
         label="Start date"
         type="date"
-        defaultValue="2017-05-24"
         sx={{ width: 220 }}
         InputLabelProps={{
           shrink: true,

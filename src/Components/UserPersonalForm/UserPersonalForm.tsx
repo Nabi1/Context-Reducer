@@ -5,8 +5,9 @@ import Typography from '@mui/material/Typography';
 import { UserPersonalContext } from './UserPersonalContext';
 
 export const UserPersonalForm = () => {
-  const { setUserPersonalState, userPersonalState } =
-    useContext(UserPersonalContext);
+  const {
+    contextValue: { userPersonalState, setUserPersonalState },
+  } = useContext(UserPersonalContext);
 
   return (
     <Box

@@ -1,11 +1,11 @@
-import React, { useReducer } from 'react';
+import React, { useMemo, useReducer } from 'react';
 
 import { UserPersonalContext, DEFAULT_STATE } from './UserPersonalContext';
 
-function userPersonalStateReducer(
+const userPersonalStateReducer = (
   previousFormState: { firstName: string; lastName: string },
   action: { method: any; firstName: string; lastName: string },
-) {
+) => {
   const userPersonalState = { ...previousFormState };
 
   switch (action.method) {
@@ -17,8 +17,9 @@ function userPersonalStateReducer(
       break;
     default:
   }
+
   return userPersonalState;
-}
+};
 
 const UserPersonalFormProvider = ({ children }: any) => {
   const [userPersonalState, setUserPersonalState] = useReducer(
@@ -26,13 +27,16 @@ const UserPersonalFormProvider = ({ children }: any) => {
     DEFAULT_STATE,
   );
 
+  const contextValue = useMemo(
+    () => ({
+      userPersonalState,
+      setUserPersonalState,
+    }),
+    [userPersonalState],
+  );
+
   return (
-    <UserPersonalContext.Provider
-      value={{
-        userPersonalState,
-        setUserPersonalState,
-      }}
-    >
+    <UserPersonalContext.Provider value={{ contextValue }}>
       {children}
     </UserPersonalContext.Provider>
   );
