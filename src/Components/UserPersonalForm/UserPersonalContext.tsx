@@ -1,0 +1,13 @@
+import { createContext } from 'react';
+
+export const DEFAULT_STATE = {
+  firstName: '',
+  lastName: '',
+};
+
+export const UserPersonalContext = createContext({
+  userPersonalState: DEFAULT_STATE,
+  setUserPersonalState: function identity(arg: any): any {
+    return arg;
+  },
+});
