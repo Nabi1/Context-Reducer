@@ -3,10 +3,12 @@ import { createContext } from 'react';
 export const DEFAULT_STATE = {
   jobName: '',
   companyName: '',
-  startDate: '',
+  startDate: '2017-05-24',
 };
 
-export const FormContext = createContext({
-  userProfessionalState: DEFAULT_STATE,
-  setUserProfessionalState: null,
+export const UserProfessionalContext = createContext({
+  contextValue: {
+    userProfessionalState: DEFAULT_STATE,
+    setUserProfessionalState: (arg: any): any => arg,
+  },
 });
