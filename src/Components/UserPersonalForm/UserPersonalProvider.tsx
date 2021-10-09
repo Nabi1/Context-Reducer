@@ -3,8 +3,19 @@ import React, { useMemo, useReducer } from 'react';
 import { UserPersonalContext, DEFAULT_STATE } from './UserPersonalContext';
 
 const userPersonalStateReducer = (
-  previousFormState: { firstName: string; lastName: string },
-  action: { method: any; firstName: string; lastName: string },
+  previousFormState: {
+    firstName: string;
+    lastName: string;
+    mainAddresse: string;
+    city: string;
+  },
+  action: {
+    method: any;
+    firstName: string;
+    lastName: string;
+    mainAddresse: string;
+    city: string;
+  },
 ) => {
   const userPersonalState = { ...previousFormState };
 
@@ -14,6 +25,12 @@ const userPersonalStateReducer = (
       break;
     case 'setLastName':
       userPersonalState.lastName = action.lastName;
+      break;
+    case 'setMainAddresse':
+      userPersonalState.mainAddresse = action.mainAddresse;
+      break;
+    case 'setCity':
+      userPersonalState.city = action.city;
       break;
     default:
   }

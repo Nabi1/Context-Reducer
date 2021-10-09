@@ -3,8 +3,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { UserPersonalForm } from './Components/UserPersonalForm/UserPersonalForm';
-import { UserProfessionalForm } from './Components/UserProfessionalForm/UserProfessionalFor';
+import { UserProfessionalForm } from './Components/UserProfessionalForm/UserProfessionalForm';
 import UserPersonalFormProvider from './Components/UserPersonalForm/UserPersonalProvider';
+import UserProfessionalFormProvider from './Components/UserProfessionalForm/UserProfessionalProvider';
 
 function App(): JSX.Element {
   return (
@@ -15,11 +16,11 @@ function App(): JSX.Element {
       {/* Wrap the below Provider to see if its useMemo is working */}
       <UserPersonalFormProvider>
         <UserPersonalForm />
-        {/* Replace the above UserPersonalForm by an HOC like UserPersonalFormContainer to show */}
-        {/* that grand children can access to the context value without passing any props  */}
       </UserPersonalFormProvider>
       {/* Wrap the above Provider to see if its useMemo is working */}
-      <UserProfessionalForm />
+      <UserProfessionalFormProvider>
+        <UserProfessionalForm />
+      </UserProfessionalFormProvider>
     </div>
   );
 }

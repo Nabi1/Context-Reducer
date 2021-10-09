@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import { UserPersonalContext } from './UserPersonalContext';
+import { Typography } from '@mui/material';
+
+import { UserPersonalAddresse } from './UserPersonalAddresse';
+import { UserPersonalCivility } from './UserPersonalCivility';
 
 export const UserPersonalForm = () => {
-  const {
-    contextValue: { userPersonalState, setUserPersonalState },
-  } = useContext(UserPersonalContext);
-
   return (
     <Box
       component="form"
@@ -21,28 +18,8 @@ export const UserPersonalForm = () => {
       <Typography variant="h6" gutterBottom component="div">
         Personal Info
       </Typography>
-      <TextField
-        id="outlined-multiline-flexible"
-        label="Firstname"
-        value={userPersonalState.firstName}
-        onChange={(e) =>
-          setUserPersonalState({
-            method: 'setFirstName',
-            firstName: e.target.value,
-          })
-        }
-      />
-      <TextField
-        id="outlined-multiline-flexible"
-        label="LastName"
-        value={userPersonalState.lastName}
-        onChange={(e) =>
-          setUserPersonalState({
-            method: 'setLastName',
-            lastName: e.target.value,
-          })
-        }
-      />
+      <UserPersonalAddresse />
+      <UserPersonalCivility />
     </Box>
   );
 };
